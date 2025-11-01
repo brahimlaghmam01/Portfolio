@@ -1,0 +1,416 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Custom Professional Portfolio Colors */
+  --neon-blue: 59 130 246;
+  --neon-green: 52 211 153;
+  --neon-purple: 139 92 246;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(148, 163, 184, 0.15);
+}
+
+.dark {
+  /* Professional Dark Mode - High Contrast White Text */
+  --background: 222 47% 8%;
+  --foreground: 0 0% 98%;
+  --card: 222 47% 12%;
+  --card-foreground: 0 0% 98%;
+  --popover: 222 47% 12%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 217 91% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 33% 20%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 223 47% 25%;
+  --muted-foreground: 0 0% 85%;
+  --accent: 217 33% 25%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 217 33% 28%;
+  --input: 217 33% 28%;
+  --ring: 217 91% 65%;
+  --chart-1: 220 70% 55%;
+  --chart-2: 160 60% 50%;
+  --chart-3: 30 80% 60%;
+  --chart-4: 280 65% 65%;
+  --chart-5: 340 75% 60%;
+  --sidebar: 222 47% 8%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 217 91% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217 33% 20%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 217 33% 28%;
+  --sidebar-ring: 217 91% 65%;
+
+  /* Professional glass effect with better contrast */
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(59, 130, 246, 0.2);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Hide default cursor for custom cursor animation */
+    cursor: none !important;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Professional dark mode background with subtle gradient */
+  body.dark {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.12), transparent),
+      radial-gradient(ellipse 60% 50% at 50% 120%, rgba(16, 185, 129, 0.08), transparent),
+      linear-gradient(to bottom, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 6%) 50%, hsl(222, 47%, 8%) 100%);
+  }
+
+  /* Clean light mode background */
+  body:not(.dark) {
+    background: linear-gradient(to bottom, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 98%) 100%);
+  }
+
+  /* RTL support for Arabic */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  /* Custom cursor enhancements */
+  .cursor-pointer {
+    cursor: none !important;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    cursor: none !important;
+  }
+
+  input,
+  textarea,
+  select {
+    cursor: none !important;
+  }
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(59, 130, 246, 0.08) inset;
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.dark .glass-card:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(59, 130, 246, 0.15) inset;
+}
+
+.neon-glow {
+  box-shadow: 0 0 16px hsl(var(--neon-blue) / 0.2), 0 0 32px hsl(var(--neon-blue) / 0.1);
+}
+
+.dark .neon-glow {
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.4),
+    0 0 40px rgba(59, 130, 246, 0.2),
+    0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card {
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.dark .skill-card:hover {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.floating-animation {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--neon-blue)), hsl(var(--neon-green)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(
+    135deg,
+    rgb(96, 165, 250) 0%,
+    rgb(129, 140, 248) 25%,
+    rgb(167, 139, 250) 50%,
+    rgb(52, 211, 153) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: brightness(1.1);
+}
+
+.project-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.dark .project-card:hover {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(59, 130, 246, 0.2) inset;
+}
+
+/* Refined scroll-triggered animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.parallax-bg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Smooth transitions for interactive elements */
+.cursor-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursor-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode enhancements for inputs and buttons */
+.dark input,
+.dark textarea,
+.dark select {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: rgb(250, 250, 250);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+/* Enhanced button styles for dark mode */
+.dark button[class*="bg-primary"] {
+  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+.dark button[class*="bg-primary"]:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Ensure all text is readable in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: rgb(250, 250, 250);
+}
+
+.dark p,
+.dark span,
+.dark div {
+  color: inherit;
+}
+
+.dark a {
+  color: rgb(96, 165, 250);
+}
+
+.dark a:hover {
+  color: rgb(147, 197, 253);
+}
+
+/* Loading screen animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 0.6s ease-out 0.3s both;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
